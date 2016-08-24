@@ -32,19 +32,19 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * ,-----------------------------------------------------------.
      * |Pwr| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
      * |-----------------------------------------------------------|
-     * |Caps |   |   |   |   |   |   |   |Psc|Slk|Pus|Up |   |Backs|
+     * |Caps |   |   |   |   |   |   |   |Psc|Slk|Pus|Hom|   |Backs|
      * |-----------------------------------------------------------|
-     * |Contro|VoD|VoU|Mut|  F|   |  *|  /|Hom|PgU|Lef|Rig|Enter   |
+     * |Contro|VoD|VoU|Mut|  F|   |  *|  /|   |   |   |   |Enter   |
      * |-----------------------------------------------------------|
-     * |        |   |   |   |   |   |  +|  -|End|PgD|Dow|      |   |
+     * |        |   |   |   |   |   |  +|  -|   |   |End|      |   |
      * `-----------------------------------------------------------'
      *       |   |     |                       |     |   |
      *       `-------------------------------------------'
      */
     KEYMAP(PWR,   F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, INS, DEL, \
-           CAPS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,SLCK,PAUS, UP, TRNS, BSPC,      \
-           LCTL,VOLD,VOLU,MUTE,   F,TRNS,PAST,PSLS,HOME,PGUP,LEFT,RGHT,PENT,            \
-           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PPLS,PMNS,END, PGDN,DOWN,TRNS,TRNS,            \
+           CAPS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,SLCK,PAUS,HOME,TRNS, BSPC,      \
+           LCTL,VOLD,VOLU,MUTE,   F,TRNS,PAST,PSLS,TRNS,TRNS,TRNS,TRNS,PENT,            \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PPLS,PMNS,TRNS,TRNS,END, TRNS,TRNS,            \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
 
     /* Layer 2: Vi mode
