@@ -11,45 +11,45 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
 #endif
     /* Layer 0: Default Layer
      * ,-----------------------------------------------------------.
-     * |Fn1|  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|  \|  `|
+     * |Fn3|  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|  \|  `|
      * |-----------------------------------------------------------|
-     * |Fn3  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|Backs|
+     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|Backs|
      * |-----------------------------------------------------------|
-     * |CTRL  |  A|  S|  D|Fn2|  G|  H|  J|  K|  L|  ;|  '|Enter   |
+     * |Fn1   |  A|  S|  D|Fn2|  G|  H|  J|  K|  L|  ;|  '|Enter   |
      * |-----------------------------------------------------------|
      * |Fn4     |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Fn5   |Fn0|
      * `-----------------------------------------------------------'
      *       |Alt|Gui  |         Space         |LANG2|LANG1|
      *       `---------------------------------------------'
      */
-    KEYMAP(FN1, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSLS,GRV,   \
-           FN3, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSPC,       \
-           LCTL,A,   S,   D, FN2,   G,   H,   J,   K,   L,   SCLN,QUOT,ENT,             \
-           FN4, Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,FN5,FN0,             \
-                LALT,LGUI,          SPC,                LANG2,LANG1),
+    KEYMAP(FN3,    1,   2,   3,   4,   5,   6,   7,   8,   9,   0,MINS,EQL, BSLS, GRV,\
+           TAB,    Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,LBRC,RBRC,BSPC,     \
+           FN1,    A,   S,   D, FN2,   G,   H,   J,   K,   L,SCLN,QUOT, ENT,          \
+           FN4,    Z,   X,   C,   V,   B,   N,   M,COMM, DOT,SLSH, FN5, FN0,          \
+                LALT,LGUI,          SPC,                 LANG2,LANG1),
 
-    /* Layer 1: HHKB mode (HHKB Fn)
+    /* Layer 1: HHKB mode (HHKB Fn modified)
      * ,-----------------------------------------------------------.
      * |Pwr| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
      * |-----------------------------------------------------------|
      * |Caps |   |   |   |   |   |   |   |Psc|Slk|Pus|Hom|   |Backs|
      * |-----------------------------------------------------------|
-     * |Contro|VoD|VoU|Mut|  F|   |  *|  /|   |   |   |   |Enter   |
+     * |      |VoD|VoU|Mut|  F|   |  *|  /|   |   |   |   |Enter   |
      * |-----------------------------------------------------------|
      * |        |   |   |   |   |   |  +|  -|   |   |End|      |   |
      * `-----------------------------------------------------------'
      *       |   |     |                       |     |   |
      *       `-------------------------------------------'
      */
-    KEYMAP(PWR,   F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, INS, DEL, \
-           CAPS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,SLCK,PAUS,HOME,TRNS, BSPC,      \
-           LCTL,VOLD,VOLU,MUTE,   F,TRNS,PAST,PSLS,TRNS,TRNS,TRNS,TRNS,PENT,            \
-           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PPLS,PMNS,TRNS,TRNS,END, TRNS,TRNS,            \
+    KEYMAP(PWR,   F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10, F11, F12, INS, DEL,\
+           CAPS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,SLCK,PAUS,HOME,TRNS, BSPC,    \
+           TRNS,VOLD,VOLU,MUTE,   F,TRNS,PAST,PSLS,TRNS,TRNS,TRNS,TRNS,PENT,          \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PPLS,PMNS,TRNS,TRNS,END, TRNS,TRNS,          \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
 
     /* Layer 2: Vi mode
      * ,-----------------------------------------------------------.
-     * |Esc|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+     * |   | F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
      * |-----------------------------------------------------------|
      * |Tab  |   |   |   |   |   |   |PgU|   |   |   |   |   |Backs|
      * |-----------------------------------------------------------|
@@ -60,17 +60,17 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      *       |   |     |                       |     |   |
      *       `-------------------------------------------'
      */
-    KEYMAP(ESC, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
-           TAB,   NO,  NO,  NO,  NO,  NO,  NO,PGUP,  NO,  NO,  NO,  NO,  NO,BSPC,      \
-           TRNS,  NO,  NO,PGDN, FN2,  NO,LEFT,DOWN,  UP,RGHT,  NO,  NO,PENT,           \
-           TRNS,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,TRNS,TRNS,           \
+    KEYMAP(NO,    F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10, F11, F12, INS, DEL,\
+           TAB,   NO,  NO,  NO,  NO,  NO,  NO,PGUP,  NO,  NO,  NO,  NO,  NO, BSPC,    \
+           TRNS,  NO,  NO,PGDN, FN2,  NO,LEFT,DOWN,  UP,RGHT,  NO,  NO,PENT,          \
+           TRNS,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,TRNS,TRNS,          \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
 
     /* Layer 3: Numpad mode
      * ,-----------------------------------------------------------.
-     * |Esc|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+     * |Fn3|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
      * |-----------------------------------------------------------|
-     * |Fn3  |   |   |   |   |   | 7 | 8 | 9 | = |   |   |   |Backs|
+     * |     |   |   |   |   |   | 7 | 8 | 9 | = |   |   |   |Backs|
      * |-----------------------------------------------------------|
      * |      |   |   |   |   |   | 4 | 5 | 6 | + |   |   |Return  |
      * |-----------------------------------------------------------|
@@ -79,30 +79,11 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      *       |   |     |           0           |     |   |
      *       `-------------------------------------------'
      */
-    KEYMAP(ESC,   NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO, \
-           FN3,   NO,  NO,  NO,  NO,  NO,   7,   8,   9, EQL,  NO,  NO,  NO,BSPC,      \
-           TRNS,  NO,  NO,  NO,  NO,  NO,   4,   5,   6,PPLS,  NO,  NO,PENT,           \
-           TRNS,  NO,  NO,  NO,  NO,  NO,   1,   2,   3,MINS,  NO,TRNS,TRNS,           \
+    KEYMAP(FN3, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   7,   8,   9, EQL,TRNS,TRNS,TRNS,BSPC,      \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   4,   5,   6,PPLS,TRNS,TRNS,PENT,           \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   1,   2,   3,MINS,TRNS,TRNS,TRNS,           \
                 TRNS,TRNS,             0,               TRNS,TRNS),
-
-    /* Layer 4: Mouse mode
-     * ,-----------------------------------------------------------.
-     * |Fn1|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
-     * |-----------------------------------------------------------|
-     * |Tab  |   |   |   |   |   |MwL|MwD|MwU|MwR|   |   |   |Backs|
-     * |-----------------------------------------------------------|
-     * |      |   |   |   |   |   |McL|McD|McU|McR|   |   |Return  |
-     * |-----------------------------------------------------------|
-     * |        |   |   |   |   |Mb3|Mb2|Mb1|Mb4|Mb5|   |      |   |
-     * `-----------------------------------------------------------'
-     *      |    |     |          Mb1          |     |   |
-     *      `--------------------------------------------'
-     */
-    KEYMAP(FN1,   NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO, \
-           TAB,   NO,  NO,  NO,  NO,  NO,WH_L,WH_D,WH_U,WH_R,  NO,  NO,  NO,BSPC,      \
-           TRNS,  NO,  NO,  NO,  NO,  NO,MS_L,MS_D,MS_U,MS_R,  NO,  NO,PENT,           \
-           TRNS,  NO,  NO,  NO,  NO,BTN3,BTN2,BTN1,BTN4,BTN5,  NO,TRNS,TRNS,           \
-                TRNS,TRNS,             BTN1,            TRNS,TRNS),
 };
 
 
@@ -154,9 +135,9 @@ enum function_id {
 
 const uint16_t fn_actions[] PROGMEM = {
     [0]  = ACTION_LAYER_MOMENTARY(1),
-    [1]  = ACTION_LAYER_TAP_KEY(4, KC_ESC),
+    [1]  = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
     [2]  = ACTION_LAYER_TAP_KEY(2, KC_F),
-    [3]  = ACTION_LAYER_TAP_KEY(3, KC_TAB),
+    [3]  = ACTION_LAYER_TAP_TOGGLE(3),
     [4]  = ACTION_FUNCTION_TAP(LSHIFT_LPAREN), // Function: LShift with tap '('
     [5]  = ACTION_FUNCTION_TAP(RSHIFT_RPAREN), // Function: RShift with tap ')'
 };
