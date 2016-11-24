@@ -133,7 +133,7 @@ enum function_id {
     RSHIFT_RPAREN,
 };
 
-const uint16_t fn_actions[] PROGMEM = {
+const action_t fn_actions[] PROGMEM = {
     [0]  = ACTION_LAYER_MOMENTARY(1),
     [1]  = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
     [2]  = ACTION_LAYER_TAP_KEY(2, KC_F),
