@@ -28,7 +28,26 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
            FN4,    Z,   X,   C,   V,   B,   N,   M,COMM, DOT,SLSH, FN5, FN0,          \
                 LALT,LGUI,          SPC,                 LANG2,LANG1),
 
-    /* Layer 1: HHKB mode (HHKB Fn modified)
+    /* Layer 1: Windows Layer
+     * ,-----------------------------------------------------------.
+     * |Fn3|  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|  \|  `|
+     * |-----------------------------------------------------------|
+     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|Backs|
+     * |-----------------------------------------------------------|
+     * |Fn1   |  A|  S|  D|Fn2|  G|  H|  J|  K|  L|  ;|  '|Enter   |
+     * |-----------------------------------------------------------|
+     * |Fn4     |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Fn5   |Fn0|
+     * `-----------------------------------------------------------'
+     *       |Alt|Gui  |         Space         |Fn6  |Alt  |
+     *       `---------------------------------------------'
+     */
+    KEYMAP(FN3,    1,   2,   3,   4,   5,   6,   7,   8,   9,   0,MINS,EQL, BSLS, GRV,\
+           TAB,    Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,LBRC,RBRC,BSPC,     \
+           FN1,    A,   S,   D, FN2,   G,   H,   J,   K,   L,SCLN,QUOT, ENT,          \
+           FN4,    Z,   X,   C,   V,   B,   N,   M,COMM, DOT,SLSH, FN5, FN0,          \
+                LALT,LGUI,          SPC,                 FN6,  RALT),
+
+    /* Layer 2: HHKB mode (HHKB Fn modified)
      * ,-----------------------------------------------------------.
      * |Pwr| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
      * |-----------------------------------------------------------|
@@ -47,7 +66,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
            TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PPLS,PMNS,TRNS,TRNS,END, TRNS,TRNS,          \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
 
-    /* Layer 2: Vi mode
+    /* Layer 3: Vi mode
      * ,-----------------------------------------------------------.
      * |   | F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Del|
      * |-----------------------------------------------------------|
@@ -66,7 +85,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
            TRNS,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,TRNS,TRNS,          \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
 
-    /* Layer 3: Numpad mode
+    /* Layer 4: Numpad mode
      * ,-----------------------------------------------------------.
      * |Fn3|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
      * |-----------------------------------------------------------|
@@ -84,25 +103,6 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
            TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   4,   5,   6,PPLS,TRNS,TRNS,PENT,           \
            TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   1,   2,   3,MINS,TRNS,TRNS,TRNS,           \
                 TRNS,TRNS,             0,               TRNS,TRNS),
-
-    /* Layer 4: Windows Layer
-     * ,-----------------------------------------------------------.
-     * |Fn3|  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|  \|  `|
-     * |-----------------------------------------------------------|
-     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|Backs|
-     * |-----------------------------------------------------------|
-     * |Fn1   |  A|  S|  D|Fn2|  G|  H|  J|  K|  L|  ;|  '|Enter   |
-     * |-----------------------------------------------------------|
-     * |Fn4     |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Fn5   |Fn0|
-     * `-----------------------------------------------------------'
-     *       |Alt|Gui  |         Space         |GRAVE|Alt  |
-     *       `---------------------------------------------'
-     */
-    KEYMAP(FN3,    1,   2,   3,   4,   5,   6,   7,   8,   9,   0,MINS,EQL, BSLS, GRV,\
-           TAB,    Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,LBRC,RBRC,BSPC,     \
-           FN1,    A,   S,   D, FN2,   G,   H,   J,   K,   L,SCLN,QUOT, ENT,          \
-           FN4,    Z,   X,   C,   V,   B,   N,   M,COMM, DOT,SLSH, FN5, FN0,          \
-                LALT,LGUI,          SPC,                 GRAVE,RALT),
 };
 
 
@@ -153,12 +153,13 @@ enum function_id {
 };
 
 const action_t fn_actions[] PROGMEM = {
-    [0]  = ACTION_LAYER_MOMENTARY(1),
+    [0]  = ACTION_LAYER_MOMENTARY(2),
     [1]  = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
-    [2]  = ACTION_LAYER_TAP_KEY(2, KC_F),
-    [3]  = ACTION_LAYER_TAP_TOGGLE(3),
+    [2]  = ACTION_LAYER_TAP_KEY(3, KC_F),
+    [3]  = ACTION_LAYER_TAP_TOGGLE(4),
     [4]  = ACTION_FUNCTION_TAP(LSHIFT_LPAREN), // Function: LShift with tap '('
     [5]  = ACTION_FUNCTION_TAP(RSHIFT_RPAREN), // Function: RShift with tap ')'
+    [6]  = ACTION_MODS_KEY(MOD_LALT, KC_GRAVE), // Function: Alt Tilde
 };
 #endif
 
