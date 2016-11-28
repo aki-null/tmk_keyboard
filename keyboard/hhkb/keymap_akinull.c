@@ -84,6 +84,25 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
            TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   4,   5,   6,PPLS,TRNS,TRNS,PENT,           \
            TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   1,   2,   3,MINS,TRNS,TRNS,TRNS,           \
                 TRNS,TRNS,             0,               TRNS,TRNS),
+
+    /* Layer 4: Windows Layer
+     * ,-----------------------------------------------------------.
+     * |Fn3|  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|  \|  `|
+     * |-----------------------------------------------------------|
+     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|Backs|
+     * |-----------------------------------------------------------|
+     * |Fn1   |  A|  S|  D|Fn2|  G|  H|  J|  K|  L|  ;|  '|Enter   |
+     * |-----------------------------------------------------------|
+     * |Fn4     |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Fn5   |Fn0|
+     * `-----------------------------------------------------------'
+     *       |Alt|Gui  |         Space         |GRAVE|Alt  |
+     *       `---------------------------------------------'
+     */
+    KEYMAP(FN3,    1,   2,   3,   4,   5,   6,   7,   8,   9,   0,MINS,EQL, BSLS, GRV,\
+           TAB,    Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,LBRC,RBRC,BSPC,     \
+           FN1,    A,   S,   D, FN2,   G,   H,   J,   K,   L,SCLN,QUOT, ENT,          \
+           FN4,    Z,   X,   C,   V,   B,   N,   M,COMM, DOT,SLSH, FN5, FN0,          \
+                LALT,LGUI,          SPC,                 GRAVE,RALT),
 };
 
 
