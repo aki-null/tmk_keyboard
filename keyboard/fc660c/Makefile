@@ -1,62 +1,18 @@
-#----------------------------------------------------------------------------
-# On command line:
-#
-# make all = Make software.
-#
-# make clean = Clean out built project files.
-#
-# make coff = Convert ELF to AVR COFF.
-#
-# make extcoff = Convert ELF to AVR Extended COFF.
-#
-# make program = Download the hex file to the device.
-#                Please customize your programmer settings(PROGRAM_CMD)
-#
-# make teensy = Download the hex file to the device, using teensy_loader_cli.
-#               (must have teensy_loader_cli installed).
-#
-# make dfu = Download the hex file to the device, using dfu-programmer (must
-#            have dfu-programmer installed).
-#
-# make flip = Download the hex file to the device, using Atmel FLIP (must
-#             have Atmel FLIP installed).
-#
-# make dfu-ee = Download the eeprom file to the device, using dfu-programmer
-#               (must have dfu-programmer installed).
-#
-# make flip-ee = Download the eeprom file to the device, using Atmel FLIP
-#                (must have Atmel FLIP installed).
-#
-# make debug = Start either simulavr or avarice as specified for debugging, 
-#              with avr-gdb or avr-insight as the front end for debugging.
-#
-# make filename.s = Just compile filename.c into the assembler code only.
-#
-# make filename.i = Create a preprocessed source file for use in submitting
-#                   bug reports to the GCC project.
-#
-# To rebuild project do "make clean" then "make all".
-#----------------------------------------------------------------------------
+# Target name
+TARGET ?= fc660c
 
-# Target file name (without extension).
-TARGET ?= hhkb
-
-# Directory common source filess exist
+# Location of tmk_core
 TMK_DIR ?= ../../tmk_core
 
-# Directory keyboard dependent files exist
+# Location of target dependent files exist
 TARGET_DIR ?= .
 
 
-# List C source files here. (C dependencies are automatically generated.)
-SRC ?=	matrix.c \
-	led.c
+# List C source files
+SRC ?=	fc660c.c
 
-ifeq (yes,$(strip $(RN42_ENABLE)))
-CONFIG_H ?= config_rn42.h
-else
+# Configure file
 CONFIG_H ?= config.h
-endif
 
 
 # MCU name
@@ -111,16 +67,15 @@ OPT_DEFS += -DBOOTLOADER_SIZE=4096
 # Build Options
 #   comment out to disable the options.
 #
-BOOTMAGIC_ENABLE ?= no	# Virtual DIP switch configuration
+#BOOTMAGIC_ENABLE ?= yes	# Virtual DIP switch configuration
 MOUSEKEY_ENABLE ?= yes		# Mouse keys
 EXTRAKEY_ENABLE ?= yes		# Audio control and System control
 CONSOLE_ENABLE ?= yes		# Console for debug
 COMMAND_ENABLE ?= yes    	# Commands for debug and configuration
 NKRO_ENABLE ?= yes		# USB Nkey Rollover
-#HHKB_JP ?= yes			# HHKB JP support
-#UNIMAP_ENABLE ?= yes		# Universal keymap
-#ACTIONMAP_ENABLE ?= yes	# Use 16bit actionmap instead of 8bit keymap
-#KEYMAP_SECTION_ENABLE ?= yes	# fixed address keymap for keymap editor
+#ACTIONMAP_ENABLE ?= yes		# Use 16bit actionmap instead of 8bit keymap
+UNIMAP_ENABLE ?= yes		# Universal keymap
+KEYMAP_SECTION_ENABLE ?= yes	# fixed address keymap for keymap editor
 
 #OPT_DEFS += -DNO_ACTION_TAPPING
 #OPT_DEFS += -DNO_ACTION_LAYER
@@ -132,6 +87,7 @@ NKRO_ENABLE ?= yes		# USB Nkey Rollover
 #
 ifeq (yes,$(strip $(UNIMAP_ENABLE)))
     KEYMAP_FILE = unimap
+    TARGET := $(TARGET)_unimap
 else
     ifeq (yes,$(strip $(ACTIONMAP_ENABLE)))
         KEYMAP_FILE = actionmap
@@ -142,16 +98,7 @@ endif
 ifdef KEYMAP
     SRC := $(KEYMAP_FILE)_$(KEYMAP).c $(SRC)
 else
-    ifeq (yes,$(strip $(HHKB_JP)))
-        SRC := $(KEYMAP_FILE)_jp.c $(SRC)
-    else 
-        SRC := $(KEYMAP_FILE)_hhkb.c $(SRC)
-    endif
-endif
-
-
-ifneq (, $(or $(findstring keymap_jp.c, $(SRC)), $(findstring yes, $(HHKB_JP))))
-    OPT_DEFS += -DHHKB_JP
+    SRC := $(KEYMAP_FILE).c $(SRC)
 endif
 
 
@@ -159,17 +106,6 @@ endif
 VPATH += $(TARGET_DIR)
 VPATH += $(TMK_DIR)
 
-ifeq (yes,$(strip $(RN42_ENABLE)))
-include rn42.mk
-include $(TMK_DIR)/protocol.mk
-endif
 include $(TMK_DIR)/protocol/lufa.mk
 include $(TMK_DIR)/common.mk
 include $(TMK_DIR)/rules.mk
-
-debug-on: EXTRAFLAGS += -DDEBUG -DDEBUG_ACTION
-debug-on: all
-
-debug-off: EXTRAFLAGS += -DNO_DEBUG -DNO_PRINT
-debug-off: OPT_DEFS := $(filter-out -DCONSOLE_ENABLE,$(OPT_DEFS))
-debug-off: all
