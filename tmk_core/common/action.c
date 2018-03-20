@@ -65,7 +65,7 @@ void process_action(keyrecord_t *record)
 
     if (IS_NOEVENT(event)) { return; }
 
-    action_t action = layer_switch_get_action(event.key);
+    action_t action = layer_switch_get_action(event);
     dprint("ACTION: "); debug_action(action);
 #ifndef NO_ACTION_LAYER
     dprint(" layer_state: "); layer_debug();
@@ -492,6 +492,12 @@ void unregister_code(uint8_t code)
     }
 }
 
+void type_code(uint8_t code)
+{
+    register_code(code);
+    unregister_code(code);
+}
+
 void register_mods(uint8_t mods)
 {
     if (mods) {
@@ -529,9 +535,11 @@ void clear_keyboard_but_mods(void)
 #endif
 }
 
-bool is_tap_key(keypos_t key)
+bool is_tap_key(keyevent_t event)
 {
-    action_t action = layer_switch_get_action(key);
+    if (IS_NOEVENT(event)) { return false; }
+
+    action_t action = layer_switch_get_action(event);
 
     switch (action.kind.id) {
         case ACT_LMODS_TAP:
