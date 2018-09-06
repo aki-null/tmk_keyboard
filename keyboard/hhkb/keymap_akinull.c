@@ -53,7 +53,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * |-----------------------------------------------------------|
      * |      |VoD|VoU|Mut|  F|   |  *|  /|   |   |   |   |Enter   |
      * |-----------------------------------------------------------|
-     * |        |   |   |   |   |   |  +|  -|   |   |End|      |   |
+     * |        |   |   |   |   |   |  +|  -|   |Fn7|End|      |   |
      * `-----------------------------------------------------------'
      *       |   |     |                       |     |   |
      *       `-------------------------------------------'
@@ -62,7 +62,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
     KEYMAP(PWR,   F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10, F11, F12, INS, DEL,\
            CAPS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,SLCK,PAUS,HOME,TRNS, BSPC,    \
            TRNS,VOLD,VOLU,MUTE,   F,TRNS,PAST,PSLS,TRNS,TRNS,TRNS,TRNS,PENT,          \
-           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PPLS,PMNS,TRNS,TRNS,END, TRNS,TRNS,          \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PPLS,PMNS,TRNS,FN7,END, TRNS,TRNS,          \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
 
     /* Layer 3: Vi mode
@@ -124,6 +124,7 @@ const action_t fn_actions[] PROGMEM = {
     [4]  = ACTION_FUNCTION_TAP(LSHIFT_LPAREN), // Function: LShift with tap '('
     [5]  = ACTION_FUNCTION_TAP(RSHIFT_RPAREN), // Function: RShift with tap ')'
     [6]  = ACTION_MODS_KEY(MOD_LALT, KC_GRAVE), // Function: Alt Tilde
+    [7]  = ACTION_MODS_KEY(MOD_LSFT, KC_F1), // Function: Shift + F1 for mouse capture release in UE4
 };
 
 /*
