@@ -114,6 +114,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
 enum function_id {
     LSHIFT_LPAREN,
     RSHIFT_RPAREN,
+    SWITCH_SCREEN,
 };
 
 const action_t fn_actions[] PROGMEM = {
@@ -124,7 +125,8 @@ const action_t fn_actions[] PROGMEM = {
     [4]  = ACTION_FUNCTION_TAP(LSHIFT_LPAREN), // Function: LShift with tap '('
     [5]  = ACTION_FUNCTION_TAP(RSHIFT_RPAREN), // Function: RShift with tap ')'
     [6]  = ACTION_MODS_KEY(MOD_LALT, KC_GRAVE), // Function: Alt Tilde
-    [7]  = ACTION_MODS_KEY(MOD_LSFT, KC_F1), // Function: Shift + F1 for mouse capture release in UE4
+//    [7]  = ACTION_MODS_KEY(MOD_LSFT, KC_F1), // Function: Shift + F1 for mouse capture release in UE4
+    [7]  = ACTION_FUNCTION_TAP(SWITCH_SCREEN), // Function: KVM switch screen switch
 };
 
 /*
@@ -181,5 +183,16 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
                 }
             }
             break;
+	case SWITCH_SCREEN:
+	    if (record->event.pressed) {
+	        register_code(KC_SLCK);
+	        unregister_code(KC_SLCK);
+	        register_code(KC_SLCK);
+	        unregister_code(KC_SLCK);
+	        register_code(KC_ENTER);
+	        unregister_code(KC_ENTER);
+	        send_keyboard_report();
+	    }
+	    break;
     }
 }
