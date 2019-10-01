@@ -87,23 +87,23 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
 
     /* Layer 4: Numpad mode
      * ,-----------------------------------------------------------.
-     * |Fn3|   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+     * |Fn3|   |   |   |   |   |   |   |   | / |   |   |   |   |   |
      * |-----------------------------------------------------------|
-     * |     |   |   |   |   |   | 7 | 8 | 9 | = |   |   |   |Backs|
+     * |     |   |   |   |   |   | 7 | 8 | 9 | * |   |   |   |Backs|
      * |-----------------------------------------------------------|
-     * |      |   |   |   |   |   | 4 | 5 | 6 | + |   |   |Return  |
+     * |      |   |   |   |   |   | 4 | 5 | 6 | - |   |   |       =|
      * |-----------------------------------------------------------|
-     * |        |   |   |   |   |   | 1 | 2 | 3 | - |   |      |   |
+     * |        |   |   |   |   |   | 1 | 2 | 3 | + |   |      |   |
      * `-----------------------------------------------------------'
-     *       |   |     |           0           |     |   |
+     *       |   |     |           0           |  .  |   |
      *       `-------------------------------------------'
      */
     [4] = \
-    KEYMAP(FN3, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
-           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   7,   8,   9, EQL,TRNS,TRNS,TRNS,BSPC,      \
-           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   4,   5,   6,PPLS,TRNS,TRNS,PENT,           \
-           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   1,   2,   3,MINS,TRNS,TRNS,TRNS,           \
-                TRNS,TRNS,             0,               TRNS,TRNS),
+    KEYMAP(FN3, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSLS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   7,   8,   9,PAST,TRNS,TRNS,TRNS,BSPC,      \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   4,   5,   6,MINS,TRNS,TRNS, EQL,           \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,   1,   2,   3,PPLS,TRNS,TRNS,TRNS,           \
+                TRNS,TRNS,             0,               DOT ,TRNS),
 };
 
 
